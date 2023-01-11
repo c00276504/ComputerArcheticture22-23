@@ -1,0 +1,34 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 11/01/2023 16:10:38
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : part1.X68
+00000000                             3  * Written by : Ahmad Muselmani
+00000000                             4  * Date       : 
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000  123C 0009                 10      Move.B  #9,D1   ;put 8 bits hex digit 9 in Data register D1
+00001004  1401                      11      Move.B  D1,D2   ;move 8 bits hex digit 9 from Data register D1 and paste it in  Data register D2
+00001006  11C1 044C                 12      Move.B  D1,1100 ;move 8 bits hex digit 9 from Data register D1 and paste it in  memory location $1100 
+0000100A  1438 044C                 13      Move.B  1100,D2 ;move 8 bits hex digit 9 from memory location $1100  and paste it in  Data register D2
+0000100E  11F8 044C 0064            14      Move.B  1100,100     
+00001014                            15  * Put program code here
+00001014                            16  
+00001014  FFFF FFFF                 17      SIMHALT             ; halt simulator
+00001018                            18  
+00001018                            19  * Put variables and constants here
+00001018                            20  
+00001018                            21      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
