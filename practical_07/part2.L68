@@ -1,6 +1,6 @@
 00001000 Starting Address
 Assembler used: EASy68K Editor/Assembler v5.16.01
-Created On: 11/01/2023 16:26:26
+Created On: 18/01/2023 16:50:19
 
 00000000                             1  *-----------------------------------------------------------
 00000000                             2  * Title      : part2.X68
@@ -11,23 +11,25 @@ Created On: 11/01/2023 16:26:26
 00001000                             7      ORG    $1000
 00001000                             8  START:                  ; first instruction of program
 00001000                             9  
-00001000  123C 0009                 10      MOVE.B #9,D1
-Line 11 ERROR: Undefined symbol
-00001004  43F9 004DBD16             11      LEA    text,A1
-0000100A  303C 000E                 12      MOVE   #14,D0
-0000100E  4E4F                      13      TRAP   #15
-00001010  303C 0003                 14      MOVE   #3,D0
-00001014  4E4F                      15      TRAP   #15
-00001016                            16  
-00001016                            17  * Put program code here
-00001016                            18  
-00001016  FFFF FFFF                 19      SIMHALT             ; halt simulator
-0000101A                            20  
-0000101A                            21  * Put variables and constants here
-0000101A                            22  
-0000101A                            23      END    START        ; last line of source
+00001000  123C 0009                 10      MOVE.B #9,D1    ; move 8 bit litteral number 9 into D1
+00001004  43F9 0000101A             11      LEA text, A1    ; print the text to address register A1
+0000100A  303C 000E                 12      MOVE #14,D0     ; convert 14 to hex value 'E' and place it in D0 to be intrapret to action
+0000100E  4E4F                      13      TRAP #15    ;intrapret value 15 to action ; trap #15 is used for input output and display
+00001010                            14      
+00001010  303C 0003                 15      MOVE #3,D0 ; move 8 bit litteral number 3 into D0
+00001014  4E4F                      16      TRAP #15
+00001016                            17  
+00001016                            18  * Put program code here
+00001016                            19  
+00001016  FFFF FFFF                 20      SIMHALT             ; halt simulator
+0000101A                            21      
+0000101A= 44 61 74 61 20 52 ...     22  text dc.b 'Data Register: ',0   ; convert to ascii code to place it next into A1
+0000102A                            23  
+0000102A                            24  * Put variables and constants here
+0000102A                            25  
+0000102A                            26      END    START        ; last line of source
 
-1 error detected
+No errors detected
 No warnings generated
 
 
@@ -35,3 +37,4 @@ SYMBOL TABLE INFORMATION
 Symbol-name         Value
 -------------------------
 START               1000
+TEXT                101A
