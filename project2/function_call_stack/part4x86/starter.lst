@@ -1,0 +1,15 @@
+     1                                  ; Filename starter.asm
+     2                                  
+     3                                  ; GLOBALS
+     4                                  global sub ;Declared for linker this is declaring method (entry point)
+     5                                  
+     6                                  ; TEXT SECTION
+     7                                  section	.text
+     8                                  sub:	                                ; linker entry point
+     9 00000000 55                          push ebp                            ; base address of the function's frame pushed onto stack
+    10 00000001 89E5                        mov ebp, esp                        ; place address of stack pointer at top of function frame
+    11 00000003 8B442408                    mov eax, [esp+8]                    ; fetch first argument
+    12 00000007 2B44240C                    sub eax, [esp+12]                   ; fetch second argument
+    13 0000000B 89EC                        mov esp, ebp                        ; place address of function frame on stack pointer
+    14 0000000D 5D                          pop ebp                             ; base address of the function's frame popped off of stack
+    15 0000000E C3                          ret                                 ; return

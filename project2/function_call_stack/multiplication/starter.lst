@@ -1,0 +1,16 @@
+     1                                  ; Filename starter.asm
+     2                                  
+     3                                  ; GLOBALS
+     4                                  global IMUL ;Declared for linker this is declaring method (entry point)
+     5                                  
+     6                                  ; TEXT SECTION
+     7                                  section	.text
+     8                                  IMUL:	                                ; linker entry point
+     9 00000000 55                          push ebp                            ; base address of the function's frame pushed onto stack
+    10 00000001 89E5                        mov ebp, esp                        ; place address of stack pointer at top of function frame
+    11 00000003 8B442408                    mov eax, [esp+8]                    ; fetch first argument
+    12 00000007 0FAF44240C                  IMUL eax, [esp+12]                  ; fetch second argument
+    13 0000000C 0FAF442410                  IMUL eax, [esp+16]                  ; fetch third argument
+    14 00000011 89EC                        mov esp, ebp                        ; place address of function frame on stack pointer
+    15 00000013 5D                          pop ebp                             ; base address of the function's frame popped off of stack
+    16 00000014 C3                          ret                                 ; return
